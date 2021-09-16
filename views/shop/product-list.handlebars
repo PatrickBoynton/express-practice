@@ -1,0 +1,18 @@
+<main>
+	<h1>My Products</h1>
+
+	{{#if hasProducts}}
+		{{#each products}}
+			<h1>{{this.title}}</h1>
+			<img src="{{this.imgUrl}}" alt="{{this.title}}" />
+			<p>${{this.price}}</p>
+			<p>{{this.description}}</p>
+			<a href="/products/{{this.id}}/">Details</a>
+			<form action="/add-to-cart" method="POST">
+				<button type="submit">Add to Cart</button>
+			</form>
+		{{/each}}
+	{{else}}
+		<p>No products here!</p>
+	{{/if}}
+</main>
