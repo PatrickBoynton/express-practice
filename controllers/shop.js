@@ -15,10 +15,11 @@ exports.getProduct = (request, response) => {
     const id = request.params.id;
 
     Product.findById(id, product =>
-        console.log(product)
+        response.render('shop/product-detail.handlebars', {
+            product,
+            pageTitle: product.title
+        })
     );
-
-    response.redirect('/');
 };
 
 exports.getIndex = (request, response) => {
