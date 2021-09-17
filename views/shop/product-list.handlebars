@@ -8,7 +8,8 @@
 			<p>${{this.price}}</p>
 			<p>{{this.description}}</p>
 			<a href="/products/{{this.id}}/">Details</a>
-			<form action="/add-to-cart" method="POST">
+			<form action="/cart" method="POST">
+				<input type="hidden" name="id" value="{{this.id}}">
 				<button type="submit">Add to Cart</button>
 			</form>
 		{{/each}}

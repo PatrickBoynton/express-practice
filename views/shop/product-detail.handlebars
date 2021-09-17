@@ -4,6 +4,6 @@
 <h2>{{product.price}}</h2>
 <p>{{product.description}}</p>
 <form action="/cart" method="POST">
+	<input type="hidden" name="id" value="{{product.id}}">
 	<button type="submit">Add To Cart</button>
-	<input type="hidden" name="product-id" value="{{product.id}}">
 </form>
