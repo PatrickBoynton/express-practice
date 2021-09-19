@@ -17,6 +17,14 @@ exports.addProducts = (request, response) => {
     response.redirect('/');
 };
 
+exports.getEditProductPage = (request, response) => {
+    response.render('admin/admin', {
+        pageTitle: 'Add Product',
+        formCSS: true
+    });
+};
+
+
 exports.getProducts = (request, response) => {
     Product.fetchAll((products) => {
         response.render('admin/product-list', {
