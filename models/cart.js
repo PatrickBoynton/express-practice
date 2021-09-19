@@ -8,7 +8,7 @@ const p = path.join(helper, 'data', 'cart.json');
 module.exports = class Cart {
     static addProduct(id, productPrice) {
         fs.readFile(p, (error, data) => {
-            let cart = { products: [], totalPrice: 0, quantity: 0 };
+            let cart = { products: [], totalPrice: 0};
 
             if (!error) {
                 cart = JSON.parse(data);
