@@ -5,9 +5,7 @@
 			<img src="{{this.imgUrl}}" alt="{{this.title}}" />
 			<p>${{this.price}}</p>
 			<p>{{this.description}}</p>
-			<form action="/admin/edit-product" method="GET">
-				<button type="submit">Edit</button>
-			</form>
+			<a href="/admin/edit-product">Edit</a>
 			<form action="/admin/delete-product" method="POST">
 				<button type="submit">Delete</button>
 			</form>
