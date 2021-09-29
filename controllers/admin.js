@@ -1,14 +1,15 @@
 const Product = require('../models/product');
 
-exports.getAddProductPage = (request, response) => {
-    response.render('admin/admin', {
+exports.getAddProduct = (request, response) => {
+    response.render('admin/add-product', {
         pageTitle: 'Add Product',
-        formCSS: true
+        formCSS: true,
+        editing: false,
     });
 };
 
 exports.addProducts = (request, response) => {
-    const {title, imageUrl, price, description} = request.body;
+    const { title, imageUrl, price, description } = request.body;
 
     const product = new Product(title, imageUrl, price, description);
 
@@ -17,10 +18,20 @@ exports.addProducts = (request, response) => {
     response.redirect('/');
 };
 
-exports.getEditProductPage = (request, response) => {
-    response.render('admin/admin', {
-        pageTitle: 'Add Product',
-        formCSS: true
+exports.getEditProduct = (request, response) => {
+    const editMode = request.query.edit;
+    const id = request.params.id;
+
+    Product.findById(id, product => {
+        if (!editMode) {
+            return response.redirect('/');
+        }
+        response.render('admin/edit-product', {
+            pageTitle: 'Edit Product',
+            formCSS: true,
+            editing: editMode,
+            product: product,
+        });
     });
 };
 
